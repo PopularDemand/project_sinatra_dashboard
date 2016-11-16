@@ -19,11 +19,8 @@ p url
 
 response = HTTParty.get(url)
 
-pp response
+pp response["response"]["employers"][0]["exactMatch"]
 
+pp response["response"]["employers"][0]["cultureAndValuesRating"]
 
-response["response"]["employers"]["exactMatch"]
-
-response["response"]["employers"]["cultureAndValuesRating"]
-
-response["response"]["employers"]["featuredReview"]
+pp response["response"]["employers"][0]["featuredReview"]

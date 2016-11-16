@@ -12,7 +12,12 @@ require_relative 'lib/dice_scraper_controller'
 
 get '/' do
   jobs = CSV.read("test.csv")
+
+  # check each job at job[1]
+  # if it matches company name
+  # render glassdoor info
   erb :index, locals: { jobs: jobs }
+
 end
 
 post '/' do
@@ -21,5 +26,8 @@ post '/' do
 
   jobs = DiceScraperController.new.search(keyword, location)
   JobWriter.new.save_results('test.csv', jobs)
+
+  CompanyProfiler.new(jobs).write
+
   redirect '/'
 end
