@@ -1,5 +1,30 @@
-<%# jobs.each do |job| %>
-  <%#= job %>
-<%# end %>
+<form class="form-inline" method="post" action="/">
+  <div class="form-group">
+    <label for="keyword">Keyword</label>
+    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="ruby developer">
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" class="form-control" id="location" name="location" placeholder="New York, NY">
+  </div>
+  <button type="submit" class="btn btn-default">Scrape!</button>
+</form>
 
-this is html
+<br />
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <% jobs[0].each do |header| %>
+        <th><%= header %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <% jobs[1..-1].each do |job| %>
+  <tr>
+    <% job.each do |col| %>
+      <td><%= col %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

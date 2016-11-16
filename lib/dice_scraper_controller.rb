@@ -6,6 +6,7 @@ class DiceScraperController
   end
 
   def search(terms, location)
+    puts "Working in DiceScraperController"
     page = scraper.get_dice_results(terms: terms, loc: location)
     job_pages = scraper.get_job_pages(page)
     jobs = parser.build_jobs(job_pages)

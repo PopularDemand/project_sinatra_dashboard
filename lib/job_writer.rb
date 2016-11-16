@@ -6,7 +6,7 @@ class JobWriter
 
     headers = !File.exist?(filepath)
 
-    CSV.open(filepath, 'a') do |csv|
+    CSV.open(filepath, 'w') do |csv|
       # each one of these comes out in its own row.
       csv << ["Job Title", "Company", "Link", "Location", "Posting Date", "Company ID", "Job ID"] if headers
 

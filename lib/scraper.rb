@@ -28,12 +28,12 @@ class Scraper
 
     def default_agent
       scraper = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari' }
-      scraper.history_added = Proc.new { sleep 0.75  }
+      scraper.history_added = Proc.new { sleep 0.25  }
       scraper
     end
 
     def get_dice_job_links(page)
-      page.links_with(id: /position\d*/)
+      page.links_with(id: /position\d*/)[0..20]
     end
 end
 
