@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 require 'sinatra'
+require 'sinatra/reloader'
 require 'figaro'
-require 'sinatra/reloader' if development?
+require 'csv'
+# require 'thin'
 
 # Figaro.application = Figaro::Application.new(
 #   environment: 'development',
@@ -10,3 +12,15 @@ require 'sinatra/reloader' if development?
 # Figaro.load
 #
 # key = ENV['dice']
+
+get '/' do
+  # search
+  # jobs = CSV.read("test.csv")
+  erb :index, locals: { jobs: jobs }
+end
+
+post '/' do
+  # invokes scraper
+    # writes csv
+  # redirect '/'
+end
