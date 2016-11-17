@@ -8,7 +8,7 @@ require_relative 'lib/scraper'
 require_relative 'lib/dice_jobs_page_parser'
 require_relative 'lib/job_writer'
 require_relative 'lib/dice_scraper_controller'
-
+require_relative 'lib/company_profiler'
 
 get '/' do
   jobs = CSV.read("test.csv")
@@ -27,7 +27,7 @@ post '/' do
   jobs = DiceScraperController.new.search(keyword, location)
   JobWriter.new.save_results('test.csv', jobs)
 
-  CompanyProfiler.new(jobs).write
+  CompanyProfiler.new(jobs).company_profiles
 
   redirect '/'
 end
